@@ -81,11 +81,12 @@ ul li.checked::before {
 /* Style the header */
 .header {
   /* background-color: #f44336; */
+  font-family: 'Open Sans', sans-serif;
   padding: 30px 40px;
   color: black;
-  text-align: center;
-  border: 2px solid black;
+  text-align: left;
 }
+
 
 /* Clear floats after the header */
 .header:after {
@@ -107,11 +108,12 @@ input {
 
 /* Style the "Add" button */
 .addBtn {
-  padding: 10px;
-  margin: 0 0;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 0;
+  margin: 0;
   width: 25%;
-  background: #d9d9d9;
-  color: #555;
+  background: #53BA83;
+  color: white;
   float: left;
   text-align: center;
   font-size: 16px;
@@ -121,11 +123,13 @@ input {
 }
 
 .addBtn:hover {
-  background-color: #bbb;
+  background-color: #2FA264;
 }
 
 .to-do-list{ 
-  margin: 50px auto;
+  margin: 100px auto;
+  margin-bottom: 30px;
+  border: 3px solid #53BA83;
   width:50%;
 }
 
@@ -140,15 +144,12 @@ input {
   /* border: 2px solid yellow; */
 }  
 
-.flex-child:first-child {
-} 
 
 .timer{ 
   padding-right: 50px;
   text-align: right;
   font-family: 'Open Sans', sans-serif;
 
-  font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 64px;
@@ -166,6 +167,22 @@ input {
   margin: auto;
   color: white;
 }
+
+.recommendation{ 
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 54px;
+  line-height: 87px;
+  padding-right: 40px;
+  margin: auto;
+  color: white;
+  text-align: right;
+}
+
+/* p.recommendation{ 
+  padding-left: 100px;
+} */
 
 .circle-small-task {
   width: 46px;
@@ -226,32 +243,40 @@ color: white;
 }
 
 #pause{
-background: #C4C4C4;
+background: #095169;
 font-family: Open Sans;
 font-style: normal;
 color:white;
 font-weight: 600;
 font-size: 24px;
+padding:10px 30px;
 line-height: 33px;
+border:none;
 /* identical to box height */
-
 
 color:white;
 }
 
+#pause:hover{ 
+  background-color: #043A4D;
+}
+
 #run{
-  
-  background: #C4C4C4;
+  background:#53BA83;
   color: white;
+  padding:10px 30px;
 font-family: Open Sans;
 font-style: normal;
 font-weight: 600;
 font-size: 24px;
 line-height: 33px;
 /* identical to box height */
-
-
 color: white;
+border:none;
+}
+
+#run:hover{ 
+  background-color: #2FA264;
 }
 
 div.name>img{ 
@@ -264,6 +289,8 @@ div.name>img{
 p.name{ 
   padding-left: 100px;
 }
+
+
 
 .btn-small-dft {
   background-color: #9FD86B;
@@ -288,3 +315,145 @@ p.name{
 .btn-large-dft:hover {
   background-color: #018988;
 }
+
+.buttons-div{ 
+  margin: 0 auto;
+  text-align: center;
+}
+
+#container {
+  padding:100px 300px;
+  height: 350px;
+  text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+  /* just for demo */
+  min-width: 612px;
+
+}
+
+.box1,
+.box2,
+.box3,
+.box4{
+  width: 300px;
+  height: 300px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 300px;
+  font-size: 35px;  
+  color:white;
+}
+
+.box5,
+.box6,
+.box7,
+.box8{
+  width: 300px;
+  height: 300px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  text-align:center;
+  vertical-align: middle;
+  line-height: 300px;  
+  zoom: 1;
+  color:white;
+  font-size: 35px;
+}
+
+.stretch {
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
+}
+
+.box1 {
+  background: #2BA24C;
+}
+
+.box1:hover {
+  background: #80C794;
+}
+
+.box2 {
+  background: #E43E2B;
+}
+
+.box2:hover {
+  background:#EF8B80;
+}
+
+.box3{
+  background: #FF3F18;
+}
+.box3:hover{
+  background: #FF8C74;
+}
+
+
+.box4 {
+  background: #00A2F3;
+}
+.box4:hover {
+  background: #66C7F8;
+}
+
+
+.box5 {
+  background: #3F5E9D;
+}
+.box5:hover {
+  background: #8C9EC4;
+}
+
+
+.box6 {
+  background: #FF4277;
+}
+
+.box6:hover {
+  background: #FF8EAE;
+}
+.box7 {
+  background: #B10006;
+}
+.box7:hover {
+  background: #D0666A;
+}
+
+.box8 {
+  background: #010101;
+}
+
+.box8:hover {
+  background: #676767;
+}
+
+.btn-start-dft {
+  background: #53BA83;
+  color: white;
+  padding: 10px 30px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  margin: 0 auto;
+  /* identical to box height */
+  color: white;
+  border: none;
+}
+
+.btn-start-dft:hover {
+  background-color: #2FA264;
+}
+
+
+
+
