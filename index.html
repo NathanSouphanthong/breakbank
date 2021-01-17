@@ -78,6 +78,11 @@
                             <button onclick="newElement('medium')" type="button" class="btn btn-medium-dft" data-dismiss="modal">Medium</button>
                             <button onclick="newElement('large')" type="button" class="btn btn-large-dft" data-dismiss="modal">Large</button>
                         </div>
+                        <div>
+                            <br>
+                            <input type="text" id="timeInput" placeholder="Insert Custom Time">
+                            <button onclick="newElement('custom')" type="button" class="btn btn-custom-dft" data-dismiss="modal">Create Task</button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -132,32 +137,39 @@
         }
 
 
-                //Add time to the break bank if a task is compeleted and mark as completed
-                var list = document.querySelector('ul');
+ //Add time to the break bank if a task is compeleted and mark as completed
+        var list = document.querySelector('ul');
         list.addEventListener('click', function(ev) {
             if (ev.target.tagName === 'LI') {
                 ev.target.classList.toggle('checked');
                 var divClassName = ev.target.children[0].className;
-                if((divClassName.localeCompare("circle-small-task") == 0) && 
-                    !ev.target.classList.contains('checked')) { 
-                  addTime(-5);
-                }else if((divClassName.localeCompare("circle-small-task") == 0) && 
-                        ev.target.classList.contains('checked')) {
-                  addTime(5);
-                }else if (divClassName.localeCompare("circle-medium-task") == 0 && 
-                          !ev.target.classList.contains('checked')) { 
-                  addTime(-15);
-                }else if (divClassName.localeCompare("circle-medium-task") == 0 && 
-                          ev.target.classList.contains('checked')) { 
-                  addTime(15);
-                }else if (divClassName.localeCompare("circle-large-task") == 0 && 
-                          !ev.target.classList.contains('checked')) { 
-                  addTime(-30);
-                }else if (divClassName.localeCompare("circle-large-task") == 0 && 
-                          ev.target.classList.contains('checked')) { 
-                  addTime(30);
+                var customTimeAmount = document.getElementById("timeInput").value;
+                if ((divClassName.localeCompare("circle-small-task") == 0) &&
+                    !ev.target.classList.contains('checked')) {
+                    addTime(-5);
+                } else if ((divClassName.localeCompare("circle-small-task") == 0) &&
+                    ev.target.classList.contains('checked')) {
+                    addTime(5);
+                } else if (divClassName.localeCompare("circle-medium-task") == 0 &&
+                    !ev.target.classList.contains('checked')) {
+                    addTime(-15);
+                } else if (divClassName.localeCompare("circle-medium-task") == 0 &&
+                    ev.target.classList.contains('checked')) {
+                    addTime(15);
+                } else if (divClassName.localeCompare("circle-large-task") == 0 &&
+                    !ev.target.classList.contains('checked')) {
+                    addTime(-30);
+                } else if (divClassName.localeCompare("circle-large-task") == 0 &&
+                    ev.target.classList.contains('checked')) {
+                    addTime(30);
+                } else if (divClassName.localeCompare("circle-custom-task") == 0 &&
+                    !ev.target.classList.contains('checked')) {
+                    addTime(-parseInt(customTimeAmount));
+                } else if (divClassName.localeCompare("circle-custom-task") == 0 &&
+                    ev.target.classList.contains('checked')) {
+                    addTime(parseInt(customTimeAmount));
                 }
-              validateTime();
+                validateTime();
             }
         }, false);
 
@@ -197,6 +209,7 @@
             var small_task = document.createTextNode("S");
             var medium_task = document.createTextNode("M");
             var large_task = document.createTextNode("L");
+            var custom_task = document.createTextNode("C");
             li.appendChild(t);
             if (inputValue === '') {
                 alert("You must write something!");
@@ -210,21 +223,24 @@
             span.className = "close";
             span.appendChild(txt);
 
-            if(size.localeCompare('small') == 0){ 
+            if (size.localeCompare('small') == 0) {
                 div.appendChild(small_task);
                 div.classList.add("circle-small-task");
-            }else if (size.localeCompare('medium') == 0){ 
+            } else if (size.localeCompare('medium') == 0) {
                 div.appendChild(medium_task);
                 div.classList.add("circle-medium-task");
-            }else if (size.localeCompare('large') == 0){ 
-              div.appendChild(large_task);
-              div.classList.add("circle-large-task");
+            } else if (size.localeCompare('large') == 0) {
+                div.appendChild(large_task);
+                div.classList.add("circle-large-task");
+            } else if (size.localeCompare('custom') == 0) {
+                div.appendChild(custom_task);
+                div.classList.add("circle-custom-task");
             }
             li.appendChild(div);
             li.appendChild(span);
 
             for (i = 0; i < close.length; i++) {
-                close[i].onclick = function () {
+                close[i].onclick = function() {
                     var div = this.parentElement;
                     div.style.display = "none";
                 }
