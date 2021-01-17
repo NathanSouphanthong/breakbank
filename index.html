@@ -31,10 +31,10 @@
         </div>
 
         <div class="flex-child timer">
-            <h1 id="timer"><strong id="hour">00</strong>:<strong id="minute">00</strong>:<strong id="sec">10</strong>
+            <h1 id="timer"><strong id="hour">00</strong>:<strong id="minute">00</strong>:<strong id="sec">00</strong>
             </h1>
-            <!-- <button id="run">RUN</button>
-            <button id="pause">PAUSE</button> -->
+            <button id="run">RUN</button>
+            <button id="pause">PAUSE</button>
         </div>
     </div>
 
@@ -112,15 +112,38 @@
             }
         }
 
-        // Add a "checked" symbol when clicking on a list item
+
+        //Add time to the break bank if a task is compeleted and mark as completed
         var list = document.querySelector('ul');
-        list.addEventListener('click', function (ev) {
+        list.addEventListener('click', function(ev) {
             if (ev.target.tagName === 'LI') {
                 ev.target.classList.toggle('checked');
-            }
+                var divClassName = ev.target.children[0].className; 
+                if(divClassName.localeCompare("circle-small-task") == 0 && !(ev.target.children[0].classList.contains("time-added"))){ 
+                  ev.target.children[0].classList.add("time-added");
+                  //console.log("add 5 mins");\
+                   document.getElementById('minute').innerHTML = parseInt(document.getElementById('minute').innerHTML) + 5;
+                   validateTime();
+                }else if (divClassName.localeCompare("circle-medium-task") == 0 && !(ev.target.children[0].classList.contains("time-added"))){ 
+                  ev.target.children[0].classList.add("time-added");
+                  //console.log("add 15 mins");
+                  document.getElementById('minute').innerHTML = parseInt(document.getElementById('minute').innerHTML) + 15;
+                  validateTime();
+                }else if(divClassName.localeCompare("circle-large-task") == 0 && !(ev.target.children[0].classList.contains("time-added"))){ 
+                  ev.target.children[0].classList.add("time-added");
+                  //console.log("add 30 min");
+                   document.getElementById('minute').innerHTML = parseInt(document.getElementById('minute').innerHTML) + 30;
+                   validateTime();
+                }
+                }
         }, false);
 
-
+        function validateTime(){ 
+          if(parseInt(document.getElementById('minute').innerHTML) > 60){ 
+              document.getElementById('minute').innerHTML = parseInt(document.getElementById('minute').innerHTML) - 60;
+              document.getElementById('hour').innerHTML = parseInt(document.getElementById('hour').innerHTML) + 1;
+          }
+        }
 
         // Create a new list item when clicking on the "Add" button
         function newElement(size) {
@@ -166,6 +189,10 @@
                 }
             }
         }
+
+      
+        
+
 
     </script>
 
