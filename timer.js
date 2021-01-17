@@ -49,7 +49,6 @@ function start() {
     secNumber = second.innerHTML;
     secondTot = hourNumber * 60.0 * 60 + minNumber * 60.0 + secNumber * 1.0;
     if (!timerRunning && secondTot != 0) {
-        console.log("awidojawijod");
         hourNumber = hour.innerHTML;
         minNumber = minute.innerHTML;
         secNumber = second.innerHTML;
@@ -72,7 +71,9 @@ function stop() {
 }
 
 function openWindow() {
-    myWindow.push(window.open('https://key-drop.com/en/Daily_free', '_blank'));
+    if(secondTot != 0){
+        myWindow.push(window.open('break_page.html', '_blank'));
+    }
 }
 
 
