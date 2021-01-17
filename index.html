@@ -33,8 +33,8 @@
         <div class="flex-child timer">
             <h1 id="timer"><strong id="hour">00</strong>:<strong id="minute">00</strong>:<strong id="sec">10</strong>
             </h1>
-            <button id="run">RUN</button>
-            <button id="pause">PAUSE</button>
+            <!-- <button id="run">RUN</button>
+            <button id="pause">PAUSE</button> -->
         </div>
     </div>
 
@@ -43,18 +43,27 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add A Task</h5>
+                    <h5 style="margin: 0 auto" class="modal-title" id="exampleModalLongTitle">Size of Task</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <span aria-hidden="true">&times;</span>
+          </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <p style="margin: 0 auto" class="text-center"> Based on the size of your task, time will be allotted to your break bank upon completion.
+                        <br> (Small: 5 minutes, Medium: 15 minutes, Large: 30 minutes, OR insert a custom time)
+                    </p>
+                    <br>
+                    <div class="col-md-12 text-center">
+                        <div class="btn-group-justified">
+                            <button onclick="newElement('small')" type="button" class="btn btn-small-dft"data-dismiss="modal">Small</button>
+                            <button onclick="newElement('medium')" type="button" class="btn btn-medium-dft"data-dismiss="modal">Medium</button>
+                            <button onclick="newElement('large')"type="button" class="btn btn-large-dft"data-dismiss="modal">Large</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -68,7 +77,7 @@
         <div id="myDIV" class="header">
             <h2 style="margin:5px">To Do List</h2>
             <input style="inline-block" type="text" id="myInput" placeholder="What do you need to do today?">
-            <span onclick="newElement()" data-target="#exampleModalCenter" data-toggle="modal" class="addBtn">Add</span>
+            <span data-target="#exampleModalCenter" data-toggle="modal" class="addBtn">Add</span>
         </div>
 
         <ul id="myUL">
@@ -111,16 +120,19 @@
             }
         }, false);
 
+
+
         // Create a new list item when clicking on the "Add" button
-        function newElement() {
+        function newElement(size) {
             var li = document.createElement("li");
             var inputValue = document.getElementById("myInput").value;
             var div = document.createElement("div");
             var t = document.createTextNode(inputValue);
+
+            //text variables for task size 
             var small_task = document.createTextNode("S");
             var medium_task = document.createTextNode("M");
             var large_task = document.createTextNode("L");
-            var custom_task = document.createTextNode("C");
             li.appendChild(t);
             if (inputValue === '') {
                 alert("You must write something!");
@@ -133,8 +145,17 @@
             var txt = document.createTextNode("\u00D7");
             span.className = "close";
             span.appendChild(txt);
-            div.appendChild(small_task); // appending the text to the size bubble
-            div.classList.add("circle-small-task");
+
+            if(size.localeCompare('small') == 0){ 
+                div.appendChild(small_task);
+                div.classList.add("circle-small-task");
+            }else if (size.localeCompare('medium') == 0){ 
+                div.appendChild(medium_task);
+                div.classList.add("circle-medium-task");
+            }else if (size.localeCompare('large') == 0){ 
+              div.appendChild(large_task);
+              div.classList.add("circle-large-task");
+            }
             li.appendChild(div);
             li.appendChild(span);
 
@@ -145,7 +166,6 @@
                 }
             }
         }
-
 
     </script>
 
