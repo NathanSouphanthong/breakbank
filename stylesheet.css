@@ -11,6 +11,11 @@ ul {
   margin: 0;
   padding: 0;
 }
+/* Style the button */
+
+button {
+    color: white;
+}
 
 /* Style the list items */
 ul li {
@@ -75,10 +80,11 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-  background-color: #f44336;
+  /* background-color: #f44336; */
   padding: 30px 40px;
-  color: white;
+  color: black;
   text-align: center;
+  border: 2px solid black;
 }
 
 /* Clear floats after the header */
@@ -126,6 +132,7 @@ input {
 .flex-container {
   display: flex;
   background-color: #53BA83;
+  padding: 50px 0px;
 }
 
 .flex-child {
@@ -256,4 +263,28 @@ div.name>img{
 
 p.name{ 
   padding-left: 100px;
+}
+
+.btn-small-dft {
+  background-color: #9FD86B;
+}
+
+.btn-small-dft:hover {
+  background-color: #86C849;
+}
+
+.btn-medium-dft {
+  background-color: #53BA83;
+}
+
+.btn-medium-dft:hover {
+  background-color: #2FA164;
+}
+
+.btn-large-dft {
+  background-color: #059B9A;
+}
+
+.btn-large-dft:hover {
+  background-color: #018988;
 }
