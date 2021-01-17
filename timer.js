@@ -7,9 +7,9 @@ const pause = document.querySelector("#pause");
 var hourNumber = hour.innerHTML;
 var minNumber = minute.innerHTML;
 var secNumber = second.innerHTML;
-var myWindow=[];
+var myWindow = [];
 
-var secondTot = hourNumber*60.0*60 + minNumber*60.0 + secNumber*1.0;
+var secondTot = hourNumber * 60.0 * 60 + minNumber * 60.0 + secNumber * 1.0;
 console.log(hourNumber);
 console.log(minNumber);
 console.log(secNumber);
@@ -26,16 +26,16 @@ function leadingZero(time) {
     return time;
 }
 
-function runTimer(){
-    
+function runTimer() {
+
 
     secondTot--;
-    hourNumber = Math.floor(secondTot/60.0/60);
-    minNumber = Math.floor(secondTot/60.0-hourNumber*60.0);
-    secNumber = Math.floor(secondTot-minNumber*60.0-hourNumber*60.0*60.0);
-    
+    hourNumber = Math.floor(secondTot / 60.0 / 60);
+    minNumber = Math.floor(secondTot / 60.0 - hourNumber * 60.0);
+    secNumber = Math.floor(secondTot - minNumber * 60.0 - hourNumber * 60.0 * 60.0);
 
-    if(secondTot==0){
+
+    if (secondTot == 0) {
         stop();
     }
     hour.innerHTML = leadingZero(hourNumber);
@@ -44,29 +44,39 @@ function runTimer(){
 }
 
 function start() {
-    if (!timerRunning && secondTot!=0){
+    hourNumber = hour.innerHTML;
+    minNumber = minute.innerHTML;
+    secNumber = second.innerHTML;
+    secondTot = hourNumber * 60.0 * 60 + minNumber * 60.0 + secNumber * 1.0;
+    if (!timerRunning && secondTot != 0) {
+        console.log("awidojawijod");
+        hourNumber = hour.innerHTML;
+        minNumber = minute.innerHTML;
+        secNumber = second.innerHTML;
+        console.log(hourNumber + " " + minNumber + " " + secNumber);
         timerRunning = true;
         interval = setInterval(runTimer, 1000);
     }
 }
 
-function stop(){
-    if(timerRunning){
+function stop() {
+    if (timerRunning) {
         timerRunning = false;
         clearInterval(interval);
-        interval=null;
-        for (i=0; i<myWindow.length;i++){
+        interval = null;
+        for (i = 0; i < myWindow.length; i++) {
             myWindow[i].close();
         }
-        
+
     }
 }
 
-function openWindow(){
+function openWindow() {
     myWindow.push(window.open('https://key-drop.com/en/Daily_free', '_blank'));
 }
 
 
 run.addEventListener("click", start, false);
 run.addEventListener("click", openWindow, false);
-pause.addEventListener("click",stop,false);
+pause.addEventListener("click", stop, false);
+
